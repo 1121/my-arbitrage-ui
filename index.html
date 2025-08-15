@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flash-Arb UI</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: system-ui; margin: 2rem; }
+    button { padding: .6rem 1rem; font-size: 1rem; }
+    pre  { background:#f4f4f4; padding:1rem; white-space:pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Flashbots Arbitrage Bot</h1>
+  <button id="run">Run Bot (Simulate)</button>
+  <pre id="log">Waiting…</pre>
+
+  <script>
+    document.getElementById('run').onclick = async () => {
+      document.getElementById('log').textContent = 'Running…';
+      const res = await fetch('/api/run');
+      const txt = await res.text();
+      document.getElementById('log').textContent = txt;
+    };
+  </script>
+</body>
+</html>
